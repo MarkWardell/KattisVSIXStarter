@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace KattisStarter
 {
     class Program
     {
+
+
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="lstInputLines"></param>
-        private static void SolveKattisAndWriteOutput(List<string> lstInputLines)
-        {
+        /// <param name="lstInputLines"> these are </param>
+        public static void SolveKattisAndWriteOutput(List<string> lstInputLines)
+        { 
             foreach (string s in lstInputLines)
             {
                 Console.WriteLine(s);
@@ -23,7 +23,7 @@ namespace KattisStarter
         static void Main(string[] args)
         {
             List<string> lstInputLines = new List<string>();
-
+      
             string line;
             while ((line = TrimFront()) != null)
             {
