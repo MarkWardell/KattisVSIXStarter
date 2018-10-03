@@ -86,6 +86,8 @@
     <Content Include="KattisRSS.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="ProblemIDS.txt" />
+    <Content Include="ProblemKeys.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

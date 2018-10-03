@@ -16,27 +16,24 @@ namespace MakeKattisRSS
             s.GrabPages();
             KattisHTMLScraper khtml = new KattisHTMLScraper();
            
-            int i = 1;
+            
             foreach (var page in s.HTMLPages)
             {
         
                 khtml.AppendProblemsOnPage(page);
-                Console.WriteLine($"Scraping Page {i++}/{s.HTMLPages.Count} {khtml.Count} total problems downloaded");
+               // Console.WriteLine($"Scraping Page {i++}/{s.HTMLPages.Count} {khtml.Count} total problems downloaded");
             }
             foreach (KeyValuePair<string,KattisFromHTMLProblem> kvp in khtml)
             {
-                Console.WriteLine($'{kvp.Value.Title}','{kvp.Value.ID}','{kvp.Value.Link}'");
-
-            
-            
-            
+                Console.WriteLine($"\"{kvp.Value.Title}\", {kvp.Value.ID}, {kvp.Value.Link}");    
             }
-            Console.ReadKey();
+           // Console.WriteLine($"{khtml.Count} problems and statistics were downloaded ");
+           //  Console.ReadKey();
         }
 
         private static void S_GrabbedPage(object sender, PageGrabbedEventArgs e)
         {
-            Console.WriteLine($"Downloaded {e.Size} bytes from {e.Url} in {e.Time} seconds");
+            //Console.WriteLine($"Downloaded {e.Size} bytes from {e.Url} in {e.Time} seconds - Total bytes = {e.TotalDownloadSize}");
         }
     }
 }

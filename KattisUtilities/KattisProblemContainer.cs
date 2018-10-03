@@ -41,7 +41,7 @@ namespace KattisUtilities
             foreach (var ht in myRows)
             {
                 XElement xe = XElement.Parse(ht.InnerHtml);
-                var lnk = $"https://open.kattis//{xe.Attribute("href").Value}";
+                var lnk = $"https://open.kattis.com{xe.Attribute("href").Value}";
                 var ttl = xe.Value;
                 var t = stats[i++];
                 Dictionary<string, string> metricsDict = new Dictionary<string, string>();
@@ -73,10 +73,7 @@ namespace KattisUtilities
                     var anchor = Utility.TrimHTMLTrash(th.InnerText);
                     
                     if (!string.IsNullOrEmpty(anchor) )
-                        lst.Add($"{keyPrefixes[k++]}.{anchor}");
-
-                   
-                    
+                        lst.Add($"{keyPrefixes[k++]}.{anchor}");     
                 }
                 
             }
