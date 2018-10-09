@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KattisVSIXStarter", "Kattis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleLogin", "ConoleLogin\ConsoleLogin.csproj", "{FA57BC25-57BE-4C62-BA4F-3A4C117155C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncExampleWPF", "AsyncExampleWPF\AsyncExampleWPF.csproj", "{129E85E2-DF73-442F-8E60-FC651E9AE7C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncProblemHarvester", "AsyncExampleWPF\AsyncProblemHarvester.csproj", "{129E85E2-DF73-442F-8E60-FC651E9AE7C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
