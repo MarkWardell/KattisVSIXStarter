@@ -33,7 +33,7 @@ namespace MakeKattisRSS
 
         private static void S_GrabbedPage(object sender, PageGrabbedEventArgs e)
         {
-            //Console.WriteLine($"Downloaded {e.Size} bytes from {e.Url} in {e.Time} seconds - Total bytes = {e.TotalDownloadSize}");
+            Console.WriteLine($"Downloaded {e.Size} bytes from {e.Url} in {e.Time} seconds - Total bytes = {e.TotalDownloadSize}");
         }
     }
 }
