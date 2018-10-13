@@ -29,37 +29,52 @@ namespace ConoleLogin
 
             // Content type is not required when adding parameters this way
             // This will also automatically UrlEncode the values
-            //req.AddBody(config);
+            
             
             req.AddParameter("script", config.script, ParameterType.GetOrPost);
             req.AddParameter("token", config.token, ParameterType.GetOrPost);
             req.AddParameter("user", config.user, ParameterType.GetOrPost);
-
-
-            var res = client.Execute(req);
+            RestResponse res = new RestResponse();
+            Task.Run(async () =>
+            {
+                res = await GetResponseContentAsync(client, req) as RestResponse;
+            }).Wait();
+            //var res = client.Execute(req);
             await Task.Delay(10);
           
 
             var sreq = new RestRequest("/submit", Method.POST);
+            
             sreq.AddParameter("language",   "c#",   ParameterType.GetOrPost);
-            sreq.AddParameter("mainclass",  "",     ParameterType.GetOrPost);
+            sreq.AddParameter("mainclass",   "",    ParameterType.GetOrPost);
             sreq.AddParameter("script",     "true", ParameterType.GetOrPost);
             sreq.AddParameter("submit",     "true", ParameterType.GetOrPost);
             sreq.AddParameter("submit_ctr", "2",    ParameterType.GetOrPost);
-            sreq.AddParameter("problem",    "hello", ParameterType.GetOrPost);
+            sreq.AddParameter("problem",    "hello",ParameterType.GetOrPost);
             foreach (var rrCookie in res.Cookies)
-               sreq.AddParameter(rrCookie.Name, rrCookie.Value, ParameterType.Cookie);
-            
-            sreq.AddFile("files", File.ReadAllBytes(@"D:\Both\Code\Py\Hello.cs"), "hello.cs");
-            
-           
-            res = client.Execute(sreq);
+                sreq.AddParameter(rrCookie.Name, rrCookie.Value, ParameterType.Cookie);
 
+            sreq.AddFile("sub_file[]", File.ReadAllBytes(@"D:\Both\Code\Py\Hello.cs"),"hello.cs", "application/octet-stream");
+            var tcs = new TaskCompletionSource<IRestResponse>();
+            
+           // res = client.Execute(sreq);
 
+            Task.Run(async () =>
+            {
+                res = await GetResponseContentAsync(client, sreq) as RestResponse;
+            }).Wait();
 
 
 
             return true;
+        }
+        public static Task<IRestResponse> GetResponseContentAsync(RestClient theClient, RestRequest theRequest)
+        {
+            var tcs = new TaskCompletionSource<IRestResponse>();
+            theClient.ExecuteAsync(theRequest, response => {
+                tcs.SetResult(response);
+            });
+            return tcs.Task;
         }
     }
 }
