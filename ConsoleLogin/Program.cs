@@ -49,9 +49,10 @@ namespace ConoleLogin
             sreq.AddParameter("problem",    "hello", ParameterType.GetOrPost);
             foreach (var rrCookie in res.Cookies)
                sreq.AddParameter(rrCookie.Name, rrCookie.Value, ParameterType.Cookie);
-            // request.AddFile("categoryImage", new byte[100], string.Empty, "application/octet-stream")
-            sreq.AddFile("files", File.ReadAllBytes(@"D:\Both\Code\Py\Hello.cs"), "hello.cs", "application/octet-stream");
-           // sreq.AddFile("files", @"D:\Both\Code\Py\Hello.cs");
+            
+            sreq.AddFile("files", File.ReadAllBytes(@"D:\Both\Code\Py\Hello.cs"), "hello.cs");
+            
+           
             res = client.Execute(sreq);
 
 
