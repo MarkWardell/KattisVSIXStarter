@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
+﻿using RestSharp;
+using System.IO;
 using System.Threading.Tasks;
-using RestSharp;
-using RestSharp.Authenticators;
 
 namespace ConoleLogin
 {
@@ -36,6 +30,7 @@ namespace ConoleLogin
             // Content type is not required when adding parameters this way
             // This will also automatically UrlEncode the values
             //req.AddBody(config);
+            
             req.AddParameter("script", config.script, ParameterType.GetOrPost);
             req.AddParameter("token", config.token, ParameterType.GetOrPost);
             req.AddParameter("user", config.user, ParameterType.GetOrPost);
@@ -43,6 +38,26 @@ namespace ConoleLogin
 
             var res = client.Execute(req);
             await Task.Delay(10);
+          
+
+            var sreq = new RestRequest("/submit", Method.POST);
+            sreq.AddParameter("language",   "c#",   ParameterType.GetOrPost);
+            sreq.AddParameter("mainclass",  "",     ParameterType.GetOrPost);
+            sreq.AddParameter("script",     "true", ParameterType.GetOrPost);
+            sreq.AddParameter("submit",     "true", ParameterType.GetOrPost);
+            sreq.AddParameter("submit_ctr", "2",    ParameterType.GetOrPost);
+            sreq.AddParameter("problem",    "hello", ParameterType.GetOrPost);
+            foreach (var rrCookie in res.Cookies)
+               sreq.AddParameter(rrCookie.Name, rrCookie.Value, ParameterType.Cookie);
+            // request.AddFile("categoryImage", new byte[100], string.Empty, "application/octet-stream")
+            sreq.AddFile("files", File.ReadAllBytes(@"D:\Both\Code\Py\Hello.cs"), "hello.cs", "application/octet-stream");
+           // sreq.AddFile("files", @"D:\Both\Code\Py\Hello.cs");
+            res = client.Execute(sreq);
+
+
+
+
+
             return true;
         }
     }
