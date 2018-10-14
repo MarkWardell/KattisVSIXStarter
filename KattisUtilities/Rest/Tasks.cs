@@ -73,8 +73,8 @@ namespace KattisUtilities.Rest
             sreq.AddFile("sub_file[]", File.ReadAllBytes(file), "hello.cs", "application/octet-stream");
             var tcs = new TaskCompletionSource<IRestResponse>();
             RestResponse res = new RestResponse();
-            res = await GetResponseContentAsync(client, sreq) as RestResponse;  
-            return true;
+            res = await GetResponseContentAsync(client, sreq) as RestResponse;
+            return (res.StatusCode == System.Net.HttpStatusCode.OK);
         }
 
         private Task<IRestResponse> GetResponseContentAsync(RestClient theClient, RestRequest theRequest)
