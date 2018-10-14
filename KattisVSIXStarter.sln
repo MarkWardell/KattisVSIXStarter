@@ -3,8 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KattisStarter", "KattisStarter\KattisStarter.csproj", "{2B450ABB-58E8-41AB-9C81-B257DC26C8B3}"
+<!--
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KattisStarter-Project-For-Templatization", "KattisStarter-Project-For-Templatization\KattisStarter-Project-For-Templatization.csproj", "{2B450ABB-58E8-41AB-9C81-B257DC26C8B3}"
 EndProject
+-->
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KattisUploader", "KattisUploader\KattisUploader.csproj", "{44DDA6A0-DE15-4FBF-A81B-ECF1F77F4CC5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{43DB2F22-B0C7-4ED4-9320-002F619FD7B2}"
@@ -39,10 +41,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+	<!--
 		{2B450ABB-58E8-41AB-9C81-B257DC26C8B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2B450ABB-58E8-41AB-9C81-B257DC26C8B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B450ABB-58E8-41AB-9C81-B257DC26C8B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B450ABB-58E8-41AB-9C81-B257DC26C8B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		-->
 		{44DDA6A0-DE15-4FBF-A81B-ECF1F77F4CC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{44DDA6A0-DE15-4FBF-A81B-ECF1F77F4CC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44DDA6A0-DE15-4FBF-A81B-ECF1F77F4CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -80,7 +84,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+	<!--
 		{2B450ABB-58E8-41AB-9C81-B257DC26C8B3} = {DC712CE2-B468-4847-A0FC-6785AA0F5124}
+		-->
 		{44DDA6A0-DE15-4FBF-A81B-ECF1F77F4CC5} = {DC712CE2-B468-4847-A0FC-6785AA0F5124}
 		{1A4AEE3A-7315-447F-AC70-D23DF2B7513A} = {43DB2F22-B0C7-4ED4-9320-002F619FD7B2}
 		{3838D6AF-65DC-45B4-8D48-4BF737840F92} = {940101C3-00BC-4E86-BF28-8A8949CC8F7F}
