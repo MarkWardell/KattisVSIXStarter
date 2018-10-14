@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using KattisUtilities;
+using KattisUtilities.HTML;
+using KattisUtilities.Rest;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestKattisUploader
@@ -42,6 +45,42 @@ namespace TestKattisUploader
             Assert.AreEqual(kp.Link, "https://open.kattis.com/problems/beehouseperimeter");
             Assert.AreEqual(kp.ID, "beehouseperimeter");
             ///Assert.AreEqual(kp.PubDate.Date, DateTime.Parse("Sat, 15 Sep 2018 04:00:00 +0200"));
+
+
+        }
+        [TestMethod]
+
+        public async Task TestAsyncLogin()
+
+        {
+            Tasks t = new Tasks();
+            bool b = await t.LoginAsync("mark-wardell", "Atlanta1960!");
+            Assert.AreEqual(b, true);
+
+            
+
+        }
+        [TestMethod]
+        public async Task TestAsyncLoginShouldFail()
+
+        {
+            Tasks t = new Tasks();
+            bool b = await t.LoginAsync("mark-wardell", "XXX!");
+            Assert.AreEqual(b, false);
+
+
+
+        }
+
+        [TestMethod]
+
+        public async Task TestAsyncUpLoad()
+
+        {
+            Tasks t = new Tasks();
+            bool b = await t.SubmitAsync("file");
+            Assert.AreEqual(b, true);
+
 
 
         }

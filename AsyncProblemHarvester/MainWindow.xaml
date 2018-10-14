@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AsyncExampleWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="763.05" Width="800"
-        xmlns:util="clr-namespace:KattisUtilities;assembly=KattisUtilities"
+        xmlns:util="clr-namespace:KattisUtilities.HTML;assembly=KattisUtilities"
        >
 
     <Window.DataContext>

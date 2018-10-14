@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KattisUtilities
+namespace KattisUtilities.HTML
+
 {
-    public class KattisXMLWriter : IKattisProblemWriter
+    public class ExcelKattisWriter : IKattisProblemWriter
     {
         public string FileName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
@@ -22,7 +23,7 @@ namespace KattisUtilities
 
         public void WriteProblem(KattisFromHTMLProblem problem)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

@@ -49,21 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExcelKattisWriter.cs" />
-    <Compile Include="IKattisProblemWriter.cs" />
-    <Compile Include="KattisFromProblemItem.cs" />
-    <Compile Include="KattisProblemContainer.cs" />
-    <Compile Include="KattisPageIterator.cs" />
-    <Compile Include="KattisProblemVM.cs" />
-    <Compile Include="KattisRSS.cs" />
-    <Compile Include="KattisXMLWriter.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="HTML\ExcelKattisWriter.cs" />
+    <Compile Include="HTML\IKattisProblemWriter.cs" />
+    <Compile Include="HTML\KattisFromProblemItem.cs" />
+    <Compile Include="HTML\KattisProblemContainer.cs" />
+    <Compile Include="HTML\KattisPageIterator.cs" />
+    <Compile Include="HTML\KattisProblemVM.cs" />
+    <Compile Include="HTML\KattisRSS.cs" />
+    <Compile Include="HTML\KattisXMLWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rest\Tasks.cs" />
-    <Compile Include="UrlItem.cs" />
+    <Compile Include="HTML\UrlItem.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

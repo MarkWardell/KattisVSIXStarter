@@ -7,7 +7,7 @@ using System.Xml;
 using System.Xml.Linq;
 using HtmlAgilityPack;
 
-namespace KattisUtilities
+namespace KattisUtilities.HTML
 {
     public class KattisHTMLScraper : SortedDictionary<string, KattisFromHTMLProblem>
     {
