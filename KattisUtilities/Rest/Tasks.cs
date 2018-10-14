@@ -58,6 +58,8 @@ namespace KattisUtilities.Rest
         }
         public virtual async Task<bool> SubmitAsync(string file)
         {
+            if (!File.Exists(file))
+                return false;
             var client = new RestClient("https://open.kattis.com");
             var sreq = new RestRequest("/submit", Method.POST);
 
@@ -70,7 +72,7 @@ namespace KattisUtilities.Rest
             foreach (var rrCookie in cookies)
                 sreq.AddParameter(rrCookie.Name, rrCookie.Value, ParameterType.Cookie);
 
-            sreq.AddFile("sub_file[]", File.ReadAllBytes(file), "hello.cs", "application/octet-stream");
+            sreq.AddFile("sub_file[]", File.ReadAllBytes(file), file, "application/octet-stream");
             var tcs = new TaskCompletionSource<IRestResponse>();
             RestResponse res = new RestResponse();
             res = await GetResponseContentAsync(client, sreq) as RestResponse;

@@ -64,6 +64,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Hello.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="KattisRSS.xml">
       <SubType>Designer</SubType>
     </Content>

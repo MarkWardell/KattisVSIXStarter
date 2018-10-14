@@ -48,6 +48,19 @@ namespace TestKattisUploader
 
 
         }
+
+        [TestMethod]
+
+        public async Task TestAsyncLoginEmail()
+
+        {
+            Tasks t = new Tasks();
+            bool b = await t.LoginAsync("mark.d.wardell@gmail.com", "Atlanta1960!");
+            Assert.AreEqual(b, true);
+
+
+
+        }
         [TestMethod]
 
         public async Task TestAsyncLogin()
@@ -78,8 +91,31 @@ namespace TestKattisUploader
 
         {
             Tasks t = new Tasks();
-            bool b = await t.SubmitAsync("file");
+            bool b = await t.LoginAsync("mark-wardell", "Atlanta1960!");
             Assert.AreEqual(b, true);
+
+            Assert.AreEqual(true, File.Exists("Hello.cs"));
+           
+            b = await t.SubmitAsync("hello.cs");
+            Assert.AreEqual(b, true);
+
+
+
+        }
+
+        [TestMethod]
+
+        public async Task TestAsyncUpLoadShooldFailBecauseFileDoesNotExist()
+
+        {
+            Tasks t = new Tasks();
+            bool b = await t.LoginAsync("mark-wardell", "Atlanta1960!");
+            Assert.AreEqual(b, true);
+
+            Assert.AreEqual(false, File.Exists("Hello.cpp"));
+
+            b = await t.SubmitAsync("hello.cpp");
+            Assert.AreEqual(b, false);
 
 
 
