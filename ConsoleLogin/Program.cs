@@ -1,4 +1,5 @@
 ﻿using RestSharp;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -23,6 +24,7 @@ namespace ConoleLogin
 
         static async Task<bool> Login( string user, string pwd)
         {
+            
             var client = new RestClient("https://open.kattis.com");
             var req = new RestRequest("/login", Method.POST);
             var config = new ClientConfig();//values to pass in request
@@ -38,9 +40,9 @@ namespace ConoleLogin
             Task.Run(async () =>
             {
                 res = await GetResponseContentAsync(client, req) as RestResponse;
-            }).Wait();
+            }).Wait(new System.TimeSpan(0, 0, 30));
             //var res = client.Execute(req);
-            await Task.Delay(10);
+            
           
 
             var sreq = new RestRequest("/submit", Method.POST);
@@ -56,13 +58,13 @@ namespace ConoleLogin
 
             sreq.AddFile("sub_file[]", File.ReadAllBytes(@"D:\Both\Code\Py\Hello.cs"),"hello.cs", "application/octet-stream");
             var tcs = new TaskCompletionSource<IRestResponse>();
-            
-           // res = client.Execute(sreq);
+
+            // res = client.Execute(sreq);
 
             Task.Run(async () =>
             {
                 res = await GetResponseContentAsync(client, sreq) as RestResponse;
-            }).Wait();
+            }).Wait(new System.TimeSpan(0, 0, 30));
 
 
 
