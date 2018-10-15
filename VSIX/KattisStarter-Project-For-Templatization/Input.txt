@@ -1,0 +1,6 @@
+Put Input Here:
+Also Do Not Forget!!! 
+Project|Properties and Paste :
+< "..\..\Input.txt" > "..\..\Output.txt"
+
+TODO: Learn the VSIX Settings for automatically setting this up 
