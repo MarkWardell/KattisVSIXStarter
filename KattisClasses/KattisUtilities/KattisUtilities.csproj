@@ -53,6 +53,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="HTML\ExcelKattisWriter.cs" />
     <Compile Include="HTML\IKattisProblemWriter.cs" />
+    <Compile Include="HTML\PageIterarator.cs" />
     <Compile Include="HTML\KattisFromProblemItem.cs" />
     <Compile Include="HTML\KattisProblemContainer.cs" />
     <Compile Include="HTML\KattisPageIterator.cs" />

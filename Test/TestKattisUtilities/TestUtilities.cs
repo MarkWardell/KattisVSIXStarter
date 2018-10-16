@@ -175,5 +175,33 @@ namespace TestKattisUploader
             Assert.AreEqual(100, kh.Count);
 
         }
+
+        [TestMethod]
+        public async Task TestUrlIteratorOnePageAndCheckNextHasReasonableValue()
+        {
+            var pageIterator = new UrlIterator("https://open.kattis.com");
+            var pg = await pageIterator.GetPage("https://open.kattis.com/problems");
+            var next = pageIterator.NextPageName;
+            Assert.AreNotEqual(pg.Length, 0);
+
+
+        }
+
+        [TestMethod]
+        public async Task TestUrlIteratorAllPages()
+        {
+            var pageIterator = new UrlIterator("https://open.kattis.com");
+            var pg = await pageIterator.GetPage("https://open.kattis.com/problems");
+            string next = pageIterator.NextPageName;
+            int i = 0;
+            while (!string.IsNullOrEmpty(next) )
+            {
+                pg = await pageIterator.GetPage(next);
+                next = pageIterator.NextPageName;
+            }
+            Assert.AreNotEqual(pg.Length, 0);
+
+
+        }
     }
 }

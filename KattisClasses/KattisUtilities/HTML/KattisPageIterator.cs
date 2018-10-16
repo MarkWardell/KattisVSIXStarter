@@ -90,6 +90,7 @@ namespace KattisUtilities.HTML
                                                 Url = pageUrl,
                                                 Time = time,
                                                 CumulativeTime = cumulativeTime,
+                                                NextUrl = NextProblemScrape.GetNextProblemPage(data),
                                                 Page = data
 
                                             }
@@ -131,7 +132,7 @@ namespace KattisUtilities.HTML
         public double CumulativeTime { get; set; }
         public int TotalDownloadSize { get; set; }
         public string Page { get; set; }
-
+        public string NextUrl { get; internal set; }
     }
 
     internal static class GetNextProblemPage
