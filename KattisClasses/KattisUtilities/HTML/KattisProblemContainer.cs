@@ -22,8 +22,10 @@ namespace KattisUtilities.HTML
     
         }
 
+        
         public void AppendProblemsOnPage(string page)
         {
+            
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(page);
             List<string> columnNames = GetTableColumnNames(doc.DocumentNode.

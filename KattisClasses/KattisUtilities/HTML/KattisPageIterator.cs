@@ -19,7 +19,7 @@ namespace KattisUtilities.HTML
         public event EventHandler<PageGrabbedEventArgs> GrabbedPage;
         protected virtual void OnGrabbed(PageGrabbedEventArgs e)
         {
-
+            // Call the Event for notifying A page is available
             GrabbedPage?.Invoke(this, e);
         }
       
@@ -33,88 +33,7 @@ namespace KattisUtilities.HTML
 
         public KattisProblemPageGrabber(string fmt = FMT_STRING)
         {
-            //int sizePage = 0;
-            //int cumulativeSize = 0;
-            //double time = 0;
-            //double cumulativeTime = 0;
-            //HTMLPages = new List<string>();
-            //List<string> lstHTML = new List<string>();
-            //Boolean bReadPages = true;
-            //string pageUrl = string.Empty;
-            //while (bReadPages)
             
-            //{
-            //    Stopwatch sw = new Stopwatch();
-            //    sw.Start();
-            //    pageUrl = string.Format(fmt, Page++);
-            //    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(pageUrl);
-            //    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                
-            //    if (response.StatusCode == HttpStatusCode.OK)
-            //    {
-            //        try
-            //        {
-            //            Stream receiveStream = response.GetResponseStream();
-            //            StreamReader readStream = null;
-            //            if (response.CharacterSet == null)
-            //            {
-            //                readStream = new StreamReader(receiveStream);
-            //            }
-            //            else
-            //            {
-            //                readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
-                           
-            //            }
-            //            try
-            //            {
-            //                string data = readStream.ReadToEnd();
-                            
-            //                if (data.Contains("<td class=" + '"' + "name_column" + '"' + ">"))
-            //                {
-            //                    HTMLPages.Add(data);
-            //                    lstHTML.Add(data);
-            //                    sizePage = data.Length;
-            //                    cumulativeSize += sizePage;
-            //                    sw.Stop();
-            //                    time = sw.Elapsed.TotalSeconds;
-            //                    cumulativeTime += time;
-
-            //                    OnGrabbed(new PageGrabbedEventArgs()
-            //                    {
-            //                        Size = sizePage,
-            //                        TotalDownloadSize = cumulativeSize,
-            //                        Url = pageUrl,
-            //                        Time = time,
-            //                        CumulativeTime = cumulativeTime
-            //                    });
-
-
-            //                }
-            //                else
-            //                    bReadPages = false;
-
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                Console.WriteLine(ex.Message);
-            //            }
-            //            response.Close();
-            //            readStream.Close();
-            //        }catch (Exception ex)
-            //        {
-            //            Console.WriteLine(ex.Message);
-            //        }
-                    
-            //    }
-            //    else
-            //        bReadPages = false;             
-
-            //}
-
-
-
-
-
         }
 
         public void GrabPages()
@@ -124,7 +43,7 @@ namespace KattisUtilities.HTML
             double time = 0;
             double cumulativeTime = 0;
             HTMLPages = new List<string>();
-            List<string> lstHTML = new List<string>();
+            //List<string> lstHTML = new List<string>();
             Boolean bReadPages = true;
             string pageUrl = string.Empty;
             while (bReadPages)
@@ -149,7 +68,6 @@ namespace KattisUtilities.HTML
                         else
                         {
                             readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
-
                         }
                         try
                         {
@@ -157,8 +75,8 @@ namespace KattisUtilities.HTML
 
                             if (data.Contains("<td class=" + '"' + "name_column" + '"' + ">"))
                             {
+                                
                                 HTMLPages.Add(data);
-                                lstHTML.Add(data);
                                 sizePage = data.Length;
                                 cumulativeSize += sizePage;
                                 sw.Stop();
@@ -166,15 +84,18 @@ namespace KattisUtilities.HTML
                                 cumulativeTime += time;
 
                                 OnGrabbed(new PageGrabbedEventArgs()
-                                {
-                                    Size = sizePage,
-                                    TotalDownloadSize = cumulativeSize,
-                                    Url = pageUrl,
-                                    Time = time,
-                                    CumulativeTime = cumulativeTime
-                                });
+                                            {
+                                                Size = sizePage,
+                                                TotalDownloadSize = cumulativeSize,
+                                                Url = pageUrl,
+                                                Time = time,
+                                                CumulativeTime = cumulativeTime,
+                                                Page = data
 
+                                            }
+                                );
 
+                                string NextUrl = GetNextProblemPage.NextPage(data);
                             }
                             else
                                 bReadPages = false;
@@ -209,6 +130,15 @@ namespace KattisUtilities.HTML
         public double Time { get; set; }
         public double CumulativeTime { get; set; }
         public int TotalDownloadSize { get; set; }
+        public string Page { get; set; }
 
+    }
+
+    internal static class GetNextProblemPage
+    {
+        internal static string NextPage(string page)
+        {
+            return "";
+        }
     }
 }

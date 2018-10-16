@@ -52,6 +52,17 @@ namespace TestKattisUploader
         //}
 
         [TestMethod]
+        public void TestNextPageFromHTML()
+        {
+            var s = File.ReadAllText("KattisTestHTML.html");
+            var npp = new NextProblemScrape();
+            string strUrl = NextProblemScrape.GetNextProblemPage(s);
+
+            Assert.AreNotEqual(s.Length, 0);
+
+        }
+
+        [TestMethod]
 
         public async Task TestAsyncLoginEmail()
 

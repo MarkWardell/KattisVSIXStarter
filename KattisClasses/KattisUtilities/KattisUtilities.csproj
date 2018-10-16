@@ -59,6 +59,7 @@
     <Compile Include="HTML\KattisProblemVM.cs" />
     <Compile Include="HTML\KattisRSS.cs" />
     <Compile Include="HTML\KattisXMLWriter.cs" />
+    <Compile Include="HTML\NextProblemScrape.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rest\Tasks.cs" />
     <Compile Include="HTML\UrlItem.cs" />
